@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minotaur Energy Drinks</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-gradient {
+      background: linear-gradient(270deg, #facc15, #f87171, #ef4444);
+      background-size: 600% 600%;
+      animation: gradientShift 8s ease infinite;
+    }
+    .tilt:hover {
+      transform: perspective(800px) rotateX(5deg) rotateY(-5deg) scale(1.05);
+    }
+  </style>
+  <script>
+    function toggleMenu(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(el => {
+        el.classList.add("opacity-0", "translate-y-6", "transition", "duration-700");
+        observer.observe(el);
+      });
+    });
+  </script>
+</head>
+<body class="bg-black text-gray-100 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-red-900/95 backdrop-blur shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center">
+          <img src="assets/minotaur.png" alt="Minotaur Logo" class="h-10 w-auto animate-bounce">
+          <span class="ml-3 text-2xl font-extrabold tracking-widest text-yellow-400 drop-shadow-lg">
+            MINOTAUR
+          </span>
+        </div>
+        <div class="hidden sm:flex space-x-6">
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">Home</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">Flavors</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">Shop</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">About</a>
+        </div>
+        <button class="sm:hidden inline-flex items-center text-gray-200 hover:text-yellow-400" onclick="toggleMenu('mobileMenu')">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden sm:hidden bg-red-800 px-2 pt-2 pb-3 space-y-1">
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">Home</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">Flavors</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">Shop</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="text-center py-28 bg-gradient-to-b from-black to-red-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-30"></div>
+    <h1 class="relative text-6xl font-extrabold text-transparent bg-clip-text animated-gradient drop-shadow-lg">
+      Store!
+    </h1>
+    <p class="mt-6 relative text-xl text-gray-300 max-w-2xl mx-auto">
+      Unleash the beast within with our premium energy drinks. Or buy some Cool Merch!
+    </p>
+  </header>
+
+  <!-- Shop Section -->
+  <section class="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-3 gap-10">
+    <!-- Product Card -->
+    <div class="bg-red-900/50 rounded-xl p-6 text-center shadow-lg relative overflow-hidden group tilt reveal">
+      <span class="absolute top-3 right-3 bg-yellow-400 text-black text-xs font-bold px-2 py-1 rounded">🔥 Best Seller</span>
+      <img src="assets/kreetberry.png" alt="Kreet Berry" class="mx-auto mt-4 animate-[float_3s_ease-in-out_infinite]"/>
+      <h3 class="text-xl font-bold text-yellow-400 mt-4">Kreet Berry</h3>
+      <p class="text-gray-300">Sweet & tart berry mix for pure vitality.</p>
+      <div class="flex justify-center my-2">
+        ⭐⭐⭐⭐☆
+      </div>
+      <a href="#shop" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">Buy 12 pack – $19.99</a>
+    </div>
+
+    <div class="bg-red-900/50 rounded-xl p-6 text-center shadow-lg relative overflow-hidden group tilt reveal">
+      <span class="absolute top-3 right-3 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded">⚡ New</span>
+      <img src="assets/pineapple.png" alt="Pineapple Spartan" class="mx-auto mt-4 animate-[float_3.5s_ease-in-out_infinite]"/>
+      <h3 class="text-xl font-bold text-yellow-400 mt-4">Pineapple Spartan Rage</h3>
+      <p class="text-gray-300">Tropical power with a warrior’s kick.</p>
+      <div class="flex justify-center my-2">
+        ⭐⭐⭐⭐⭐
+      </div>
+      <a href="#shop" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">Buy 12 pack – $19.99</a>
+    </div>
+
+    <div class="bg-red-900/50 rounded-xl p-6 text-center shadow-lg relative overflow-hidden group tilt reveal">
+      <img src="assets/placeholder.png" alt="Phalanx Inferno Orange" class="mx-auto mt-4 animate-[float_4s_ease-in-out_infinite]"/>
+      <h3 class="text-xl font-bold text-yellow-400 mt-4">Phalanx Inferno Orange</h3>
+      <p class="text-gray-300">Unleash the spear of citrus energy.</p>
+      <div class="flex justify-center my-2">
+        ⭐⭐⭐⭐☆
+      </div>
+      <a href="#shop" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">Buy 12 pack – $19.99</a>
+    </div>
+
+    <div class="bg-red-900/50 rounded-xl p-6 text-center shadow-lg relative overflow-hidden group tilt reveal">
+      <img src="assets/lemonlime.png" alt="Raging Bull Lemon Lime" class="mx-auto mt-4 animate-[float_3.2s_ease-in-out_infinite]"/>
+      <h3 class="text-xl font-bold text-yellow-400 mt-4">Raging Bull Lemon Lime</h3>
+      <p class="text-gray-300">Bold citrus blend for fearless energy.</p>
+      <div class="flex justify-center my-2">
+        ⭐⭐⭐⭐⭐
+      </div>
+      <a href="#shop" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">Buy 12 pack – $19.99</a>
+    </div>
+
+    <div class="bg-red-900/50 rounded-xl p-6 text-center shadow-lg relative overflow-hidden group tilt reveal">
+      <span class="absolute top-3 right-3 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded">💥 Value</span>
+      <img src="assets/varity.png" alt="Variety Pack" class="mx-auto mt-4 animate-[float_3s_ease-in-out_infinite]"/>
+      <h3 class="text-xl font-bold text-yellow-400 mt-4">Variety Pack</h3>
+      <p class="text-gray-300">All our flavors in one epic bundle.</p>
+      <div class="flex justify-center my-2">
+        ⭐⭐⭐⭐⭐
+      </div>
+      <a href="#shop" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">Buy 24 pack – $20.99</a>
+    </div>
+  </section>
+
+  <!-- Merch Section -->
+  <section id="merch" class="max-w-6xl mx-auto py-20 px-6 text-center reveal">
+    <h2 class="text-4xl font-extrabold text-yellow-400 mb-6">🛍️ Minotaur Merch</h2>
+    <p class="text-lg text-gray-300 mb-10">Rep the brand with our exclusive gear.</p>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="bg-red-900/50 p-6 rounded-xl shadow-lg tilt hover:scale-105 transition">
+        <img src="https://via.placeholder.com/200x200" alt="T-Shirt" class="mx-auto"/>
+        <h3 class="text-xl font-bold text-yellow-400 mt-4">Beast Mode Tee</h3>
+        <p class="text-gray-300">Lightweight, durable, and bold.</p>
+        <a href="#merch" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition">$24.99</a>
+      </div>
+      <div class="bg-red-900/50 p-6 rounded-xl shadow-lg tilt hover:scale-105 transition">
+        <img src="https://via.placeholder.com/200x200" alt="Hoodie" class="mx-auto"/>
+        <h3 class="text-xl font-bold text-yellow-400 mt-4">Warrior Hoodie</h3>
+        <p class="text-gray-300">Stay warm. Look fierce.</p>
+        <a href="#merch" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition">$44.99</a>
+      </div>
+      <div class="bg-red-900/50 p-6 rounded-xl shadow-lg tilt hover:scale-105 transition">
+        <img src="https://via.placeholder.com/200x200" alt="Cap" class="mx-auto"/>
+        <h3 class="text-xl font-bold text-yellow-400 mt-4">Champion Cap</h3>
+        <p class="text-gray-300">Top off your style Minotaur-style.</p>
+        <a href="#merch" class="mt-3 inline-block px-4 py-2 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition">$19.99</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" class="max-w-3xl mx-auto py-20 px-6 text-center reveal">
+    <h2 class="text-4xl font-extrabold text-yellow-400 mb-6">🌀 Enter the Labyrinth</h2>
+    <p class="text-lg text-gray-300 mb-8">Take our Minotaur Labyrinth Quiz to discover which flavor matches your inner beast.</p>
+    <a href="#" class="px-8 py-4 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">Start Quiz</a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-red-900 py-6 mt-12 text-center text-gray-300">
+    <p>&copy; 2025 Minotaur Energy Drinks. All rights reserved.</p>
+  </footer>
+</body>
+</html>

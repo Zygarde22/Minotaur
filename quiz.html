@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minotaur Energy Drinks</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <script>
+    // Simple toggle for mobile nav + dropdown
+    function toggleMenu(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+  </script>
+</head>
+<body class="bg-black text-gray-100 font-sans">
+  
+  <!-- Navbar -->
+  <nav class="bg-red-900/95 backdrop-blur shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        
+        <!-- Logo + Brand -->
+        <div class="flex items-center">
+          <img src="assets/minotaur.png"
+               alt="Minotaur Logo" class="h-10 w-auto animate-pulse">
+          <span class="ml-3 text-2xl font-extrabold tracking-widest text-yellow-400 drop-shadow-lg">
+            MINOTAUR
+          </span>
+        </div>
+
+        <!-- Desktop Nav -->
+        <div class="hidden sm:flex space-x-6">
+          <a href="#" class="text-gray-200 hover:text-yellow-400 font-medium transition">Home</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 font-medium transition">Flavors</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 font-medium transition">Shop</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 font-medium transition">About</a>
+        </div>
+
+
+          <!-- Mobile menu button -->
+          <button class="sm:hidden inline-flex items-center text-gray-200 hover:text-yellow-400" 
+                  onclick="toggleMenu('mobileMenu')">
+            <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                    d="M4 6h16M4 12h16M4 18h16"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobileMenu" class="hidden sm:hidden bg-red-800 px-2 pt-2 pb-3 space-y-1">
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-yellow-400">Home</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-yellow-400">Flavors</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-yellow-400">Shop</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base font-medium text-gray-200 hover:text-yellow-400">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="text-center py-20 bg-gradient-to-b from-black to-red-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-30"></div>
+    <h1 class="relative text-6xl font-extrabold text-yellow-400 drop-shadow-lg animate-pulse">
+      Take the Bull by the Horns!
+    </h1>
+    <p class="mt-6 relative text-xl text-gray-300 max-w-2xl mx-auto">
+      Unleash the beast within with our premium energy drinks.
+    </p>
+    <div class="mt-8 flex justify-center gap-6 relative">
+      <a href="#shop" class="px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-105">
+        Shop Now
+      </a>
+      <a href="#quiz" class="px-6 py-3 border-2 border-yellow-400 text-yellow-400 font-bold rounded-lg hover:bg-yellow-400 hover:text-black transition transform hover:scale-105">
+        Take the Quiz
+      </a>
+    </div>
+  </header>
+
+  <section id="quiz" class="max-w-3xl mx-auto py-20 px-6 text-center">
+  <h2 class="text-4xl font-extrabold text-yellow-400 mb-6">🌀 Enter the Labyrinth</h2>
+  <p class="text-lg text-gray-300 mb-8">
+    Take our Minotaur Labyrinth Quiz to discover which flavor matches your inner beast.
+  </p>
+
+  <!-- Quiz Container -->
+  <div id="quiz-container" class="bg-red-900/40 p-6 rounded-2xl shadow-lg hidden">
+    <div id="quiz-question" class="text-xl font-bold text-yellow-300 mb-6"></div>
+    <div id="quiz-options" class="space-y-4"></div>
+    <button onclick="nextQuestion()" 
+      class="mt-6 px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg hover:bg-yellow-300 transition hidden"
+      id="next-btn">
+      Next
+    </button>
+  </div>
+
+  <!-- Start Button -->
+  <button id="start-btn" onclick="startQuiz()" 
+    class="px-8 py-4 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-105">
+    Start Quiz
+  </button>
+
+  <!-- Result -->
+  <div id="quiz-result" class="mt-10 text-2xl font-extrabold text-yellow-400 hidden"></div>
+</section>
+
+<script>
+  const questions = [
+    {
+      question: "What drives you most in life?",
+      options: [
+        { text: "Power & Strength", flavor: "Inferno Berry" },
+        { text: "Wisdom & Focus", flavor: "Golden Horn" },
+        { text: "Adventure & Thrill", flavor: "Lightning Citrus" }
+      ]
+    },
+    {
+      question: "Pick your ideal workout:",
+      options: [
+        { text: "Heavy Weightlifting", flavor: "Inferno Berry" },
+        { text: "Yoga & Meditation", flavor: "Golden Horn" },
+        { text: "High-Intensity Cardio", flavor: "Lightning Citrus" }
+      ]
+    },
+    {
+      question: "Choose your battle cry:",
+      options: [
+        { text: "‘Strength above all!’", flavor: "Inferno Berry" },
+        { text: "‘Calm mind, strong body.’", flavor: "Golden Horn" },
+        { text: "‘Fast and unstoppable!’", flavor: "Lightning Citrus" }
+      ]
+    }
+  ];
+
+  let currentQuestion = 0;
+  let answers = [];
+
+  function startQuiz() {
+    document.getElementById("start-btn").classList.add("hidden");
+    document.getElementById("quiz-container").classList.remove("hidden");
+    showQuestion();
+  }
+
+  function showQuestion() {
+    const q = questions[currentQuestion];
+    document.getElementById("quiz-question").innerText = q.question;
+    
+    const optionsDiv = document.getElementById("quiz-options");
+    optionsDiv.innerHTML = "";
+    
+    q.options.forEach((opt, index) => {
+      const btn = document.createElement("button");
+      btn.innerText = opt.text;
+      btn.className = "w-full px-4 py-3 bg-gray-800 hover:bg-yellow-400 hover:text-black rounded-lg font-semibold transition";
+      btn.onclick = () => selectAnswer(opt.flavor);
+      optionsDiv.appendChild(btn);
+    });
+  }
+
+  function selectAnswer(flavor) {
+    answers.push(flavor);
+    document.getElementById("next-btn").classList.remove("hidden");
+  }
+
+  function nextQuestion() {
+    currentQuestion++;
+    document.getElementById("next-btn").classList.add("hidden");
+
+    if (currentQuestion < questions.length) {
+      showQuestion();
+    } else {
+      finishQuiz();
+    }
+  }
+
+  function finishQuiz() {
+    document.getElementById("quiz-container").classList.add("hidden");
+    const resultDiv = document.getElementById("quiz-result");
+
+    // Count most frequent flavor
+    const flavor = answers.sort((a,b) =>
+      answers.filter(v=>v===a).length - answers.filter(v=>v===b).length
+    ).pop();
+
+    resultDiv.innerText = `⚡ Your Minotaur Flavor is: ${flavor}!`;
+    resultDiv.classList.remove("hidden");
+  }
+</script>

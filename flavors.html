@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minotaur Energy Drinks</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    .animated-gradient {
+      background: linear-gradient(270deg, #facc15, #f87171, #ef4444);
+      background-size: 600% 600%;
+      animation: gradientShift 8s ease infinite;
+    }
+  </style>
+  <script>
+    function toggleMenu(id) {
+      const el = document.getElementById(id);
+      el.classList.toggle("hidden");
+    }
+
+    // Simple scroll reveal effect
+    document.addEventListener("DOMContentLoaded", () => {
+      const elements = document.querySelectorAll(".reveal");
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("opacity-100", "translate-y-0");
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(el => {
+        el.classList.add("opacity-0", "translate-y-6", "transition", "duration-700");
+        observer.observe(el);
+      });
+    });
+  </script>
+</head>
+<body class="bg-black text-gray-100 font-sans">
+
+  <!-- Navbar -->
+  <nav class="bg-red-900/95 backdrop-blur shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center">
+          <img src="assets/minotaur.png" alt="Minotaur Logo" class="h-10 w-auto animate-bounce">
+          <span class="ml-3 text-2xl font-extrabold tracking-widest text-yellow-400 drop-shadow-lg">
+            MINOTAUR
+          </span>
+        </div>
+        <div class="hidden sm:flex space-x-6">
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">Home</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">Flavors</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">Shop</a>
+          <a href="#" class="text-gray-200 hover:text-yellow-400 transition">About</a>
+        </div>
+        <button class="sm:hidden inline-flex items-center text-gray-200 hover:text-yellow-400" onclick="toggleMenu('mobileMenu')">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden sm:hidden bg-red-800 px-2 pt-2 pb-3 space-y-1">
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">Home</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">Flavors</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">Shop</a>
+      <a href="#" class="block px-3 py-2 rounded-md text-base text-gray-200 hover:text-yellow-400">About</a>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="text-center py-28 bg-gradient-to-b from-black to-red-900 relative overflow-hidden">
+    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/asfalt-dark.png')] opacity-30"></div>
+    <h1 class="relative text-6xl font-extrabold text-transparent bg-clip-text animated-gradient drop-shadow-lg">
+      Flavors
+    </h1>
+    <p class="mt-6 relative text-xl text-gray-300 max-w-2xl mx-auto">
+      Unleash the beast within with our premium energy drinks.
+    </p>
+    <div class="mt-8 flex justify-center gap-6 relative">
+      <a href="#shop" class="px-6 py-3 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">
+        Shop Now
+      </a>
+      <a href="#quiz" class="px-6 py-3 border-2 border-yellow-400 text-yellow-400 font-bold rounded-lg hover:bg-yellow-400 hover:text-black transition transform hover:scale-110">
+        Take the Quiz
+      </a>
+    </div>
+  </header>
+
+  <!-- Flavors -->
+  <section class="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-3 gap-8">
+    <div class="bg-red-900/50 rounded-xl p-6 text-center hover:shadow-2xl transform hover:scale-105 transition reveal">
+      <h3 class="text-xl font-bold text-yellow-400 mb-2">Kreet Berry</h3>
+      <p class="text-gray-300">A mix of sweet and tart berry flavors. For Energy and Vitality</p>
+      <img src="assets/kreetberry.png" alt="Kreet Berry" class="mx-auto mt-4 animate-[float_3s_ease-in-out_infinite]"/>
+    </div>
+    <div class="bg-red-900/50 rounded-xl p-6 text-center hover:shadow-2xl transform hover:scale-105 transition reveal">
+      <h3 class="text-xl font-bold text-yellow-400 mb-2">Pineapple Spartan Rage</h3>
+      <p class="text-gray-300">Pineapple flavor with a kick of energy, to unleash the Spartan in you!</p>
+      <img src="assets/pineapple.png" alt="Pineapple Spartan" class="mx-auto mt-4 animate-[float_3.5s_ease-in-out_infinite]"/>
+    </div>
+    <div class="bg-red-900/50 rounded-xl p-6 text-center hover:shadow-2xl transform hover:scale-105 transition reveal">
+      <h3 class="text-xl font-bold text-yellow-400 mb-2">Phalanx Inferno Orange</h3>
+      <p class="text-gray-300">Take up the Orange Spear and unleash your inner warrior!</p>
+      <img src="assets/placeholder.png" alt="Phalanx Inferno Orange" class="mx-auto mt-4 animate-[float_4s_ease-in-out_infinite]"/>
+    </div>
+    <div class="bg-red-900/50 rounded-xl p-6 text-center hover:shadow-2xl transform hover:scale-105 transition reveal">
+      <h3 class="text-xl font-bold text-yellow-400 mb-2">Raging Bull Lemon Lime</h3>
+      <p class="text-gray-300">A zesty blend of lemon and lime flavors. For the Bold and Fearless.</p>
+      <img src="assets/lemonlime.png" alt="Raging Bull Lemon Lime" class="mx-auto mt-4 animate-[float_3.2s_ease-in-out_infinite]"/>
+    </div>
+    <div class="text-center reveal">
+      <h3 class="text-2xl font-extrabold text-yellow-400 mb-2">Only 90 Calories per Can</h3>
+      <p class="text-gray-300">Amp up your gains, not your waistline.</p>
+    </div>
+  </section>
+
+  <!-- Quiz Section -->
+  <section id="quiz" class="max-w-3xl mx-auto py-20 px-6 text-center reveal">
+    <h2 class="text-4xl font-extrabold text-yellow-400 mb-6">🌀 Enter the Labyrinth</h2>
+    <p class="text-lg text-gray-300 mb-8">
+      Take our Minotaur Labyrinth Quiz to discover which flavor matches your inner beast.
+    </p>
+    <a href="#" class="px-8 py-4 bg-yellow-400 text-black font-bold rounded-lg shadow-lg hover:bg-yellow-300 transition transform hover:scale-110">
+      Start Quiz
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-red-900 py-6 mt-12 text-center text-gray-300">
+    <p>&copy; 2025 Minotaur Energy Drinks. All rights reserved.</p>
+  </footer>
+</body>
+</html>
